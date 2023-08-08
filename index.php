@@ -1,11 +1,7 @@
 <?php
 // Lleva true para decirle que lo use como array asociativo.
-   if(file_exists("contacts.json")){
-      $contacts = json_decode(file_get_contents("contacts.json"), true);
-   }
-   else{
-      $contacts = [];
-   }
+require "database.php";
+$contacts = $conn->query("SELECT * FROM contacts");
 ?>
 
 
@@ -96,7 +92,7 @@
       <div class="container pt-4 p-3">
          <div class="row">
             <!-- Contacts -->
-            <?php if (count($contacts) == 0) : ?>
+            <?php if ($contacts->rowCount() == 0) : ?>
             <div class="col-md-4 mx-auto">
                <div class="card card-body text-center">
                      <h3 class="card-title text-capitalize">No Contacts</h3>
