@@ -4,7 +4,7 @@ require "database.php";
 
 // Contiene información de la petición http que han mandado.
 // $_SERVER
-
+$error = null;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
    if (empty($_POST["name"]) || empty($_POST["phone_number"])) {
       $error = "Please fill all the fields.";
