@@ -1,9 +1,11 @@
 <?php
-$contacs = [
-   [ "name" => "John", "phone" => "123456789" ],
-   [ "name" => "Jane", "phone" => "987654321" ],
-   [ "name" => "Bob", "phone" => "123456789"],
-];
+// Lleva true para decirle que lo use como array asociativo.
+   if(file_exists("contacts.json")){
+      $contacts = json_decode(file_get_contents("contacts.json"), true);
+   }
+   else{
+      $contacts = [];
+   }
 ?>
 
 
@@ -76,13 +78,13 @@ $contacs = [
                <li class="nav-item">
                   <a
                      class="nav-link"
-                     href="/contacts-app/"
+                     href="./index.php"
                   >Home</a>
                </li>
                <li class="nav-item">
                   <a
                      class="nav-link"
-                     href="./add.html"
+                     href="./add.php"
                   >Add Contact</a>
                </li>
             </ul>
@@ -94,12 +96,20 @@ $contacs = [
       <div class="container pt-4 p-3">
          <div class="row">
             <!-- Contacts -->
-            <?php foreach ($contacs as $contact) : ?>
+            <?php if (count($contacts) == 0) : ?>
+            <div class="col-md-4 mx-auto">
+               <div class="card card-body text-center">
+                     <h3 class="card-title text-capitalize">No Contacts</h3>
+                     <a href="./add.php">Add Contact!</a>
+               </div>
+            </div>
+            <?php endif ?>
+            <?php foreach ($contacts as $contact) : ?>
             <div class="col-md-4 mb-3">
                <div class="card text-center">
                   <div class="card-body">
                      <h3 class="card-title text-capitalize"><?= $contact["name"] ?></h3>
-                     <p class="m-2"><?= $contact["phone"] ?></p>
+                     <p class="m-2"><?= $contact["phone_number"] ?></p>
                      <a
                         href="#"
                         class="btn btn-secondary mb-2"
