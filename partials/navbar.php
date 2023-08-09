@@ -30,14 +30,26 @@
                <li class="nav-item">
                   <a
                      class="nav-link"
-                     href="./index.php"
+                     href="home.php"
                   >Home</a>
                </li>
                <li class="nav-item">
                   <a
                      class="nav-link"
-                     href="./add.php"
+                     href="add.php"
                   >Add Contact</a>
+               </li>
+               <li class="nav-item">
+                  <a
+                     class="nav-link"
+                     href="register.php"
+                  >Register</a>
+               </li>
+               <li class="nav-item">
+                  <a
+                     class="nav-link"
+                     href="login.php"
+                  >Login</a>
                </li>
             </ul>
          </div>
