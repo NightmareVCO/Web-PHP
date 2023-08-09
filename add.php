@@ -1,5 +1,10 @@
 <?php
 require "database.php";
+
+if (!isset($_SESSION["user"])) {
+   header("Location: login.php");
+   return;
+ }
 // Variables super globales
 
 // Contiene información de la petición http que han mandado.

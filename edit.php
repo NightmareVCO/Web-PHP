@@ -2,6 +2,11 @@
 
   require "database.php";
 
+  if (!isset($_SESSION["user"])) {
+   header("Location: login.php");
+   return;
+ }
+
   $id = $_GET["idcontacto"];
 
   $statement = $conn->prepare("SELECT * FROM contacts WHERE idcontacto = :id LIMIT 1");

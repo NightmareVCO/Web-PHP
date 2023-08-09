@@ -1,6 +1,13 @@
 <?php
 // Lleva true para decirle que lo use como array asociativo.
 require "database.php";
+
+session_start();
+
+if (!isset($_SESSION["user"])) {
+  header("Location: login.php");
+  return;
+}
 $contacts = $conn->query("SELECT * FROM contacts");
 ?>
    <?php require "partials/header.php"; ?>
