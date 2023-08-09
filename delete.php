@@ -11,7 +11,7 @@ if (!isset($_SESSION["user"])) {
 
 $id = $_GET["idcontacto"];
 
-$statement = $conn->prepare("SELECT * FROM contacts WHERE idcontacto = :id");
+$statement = $conn->prepare("SELECT * FROM contacts WHERE idcontacto = :id LIMIT 1");
 $statement->execute([":id" => $id]);
 
 if ($statement->rowCount() == 0) {
@@ -19,6 +19,8 @@ if ($statement->rowCount() == 0) {
    echo("HTTP 404 NOT FOUND");
    return;
 }
+
+$contact = $statement->fetch(PDO::FETCH_ASSOC);
 
 $conn->prepare("DELETE FROM contacts WHERE idcontacto = :id")->execute([":id" => $id]);
 
