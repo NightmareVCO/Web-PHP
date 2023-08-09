@@ -28,7 +28,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $statement->bindParam(":name", $name);
       $statement->bindParam(":phoneNumber", $phoneNumber);
       $statement->execute();
-   header("Location: home.php");
+
+
+      $_SESSION["flash"] = ["message" => "Contact {$_POST['name']} added."];
+      
+      header("Location: home.php");
    }
 }
 ?>
