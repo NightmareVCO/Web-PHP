@@ -1,6 +1,8 @@
 <?php
 require "database.php";
 
+session_start();
+
 if (!isset($_SESSION["user"])) {
    header("Location: login.php");
    return;
@@ -22,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
 
-      $statement = $conn->prepare("INSERT INTO contacts (name, phone_number) VALUES (:name, :phoneNumber)");
+      $statement = $conn->prepare("INSERT INTO contacts (name, phone_number, iduser) VALUES (:name, :phoneNumber, {$_SESSION['user']['iduser']})");
       $statement->bindParam(":name", $name);
       $statement->bindParam(":phoneNumber", $phoneNumber);
       $statement->execute();
