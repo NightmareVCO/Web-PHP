@@ -2,7 +2,7 @@
       <div class="container-fluid">
          <a
             class="navbar-brand font-weight-bold"
-            href="index.php"
+            href="home.php"
          >
             <img
                class="mr-2"

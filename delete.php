@@ -15,5 +15,5 @@ if ($statement->rowCount() == 0) {
 
 $conn->prepare("DELETE FROM contacts WHERE idcontacto = :id")->execute([":id" => $id]);
 
-header("Location: index.php");
+header("Location: home.php");
 ?>
