@@ -33,8 +33,6 @@
       $name = $_POST["name"];
       $phoneNumber = $_POST["phone_number"];
 
-      $contact = $statement->fetch(PDO::FETCH_ASSOC);
-
       if ($contact["iduser"] !== $_SESSION["user"]["iduser"]) {
          // No autorizado
          http_response_code(403);
