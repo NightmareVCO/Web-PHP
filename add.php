@@ -31,8 +31,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
       $_SESSION["flash"] = ["message" => "Contact {$_POST['name']} added."];
-      
+
       header("Location: home.php");
+      return; //Para que no se borre antes de tiempo en el header
    }
 }
 ?>

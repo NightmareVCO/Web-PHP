@@ -22,7 +22,15 @@ if ($statement->rowCount() == 0) {
 
 $contact = $statement->fetch(PDO::FETCH_ASSOC);
 
+if ($contact["iduser"] !== $_SESSION["user"]["iduser"]) {
+   // No autorizado
+   http_response_code(403);
+   echo("HTTP 403 FORBIDDEN");
+   return;
+}
+
 $conn->prepare("DELETE FROM contacts WHERE idcontacto = :id")->execute([":id" => $id]);
 
+$_SESSION["flash"] = ["message" => "Contact {$contact['name']} deleted."];
 header("Location: home.php");
 ?>
